@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euphoria | Your Soundscape</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo" onclick="location.reload()">EUPHORIA</div>
+    
+    <div class="nav-right-group">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="premium.html">Premium</a></li>
+        </ul>
+
+        <div id="auth-nav-area">
+            <button class="btn-signin" onclick="openModal('login-modal')">Sign In</button>
+        </div>
+
+        <div class="datetime-container">
+            <div id="clock">00:00:00 PM</div>
+            <div id="date">DAY, 00 MONTH</div>
+        </div>
+    </div>
+</nav>
+<div id="toast">Berjaya! ✅</div>
+
+<div id="main-sidebar">
+    <div class="sidebar-label">Your Library</div>
+    <div class="sidebar-link" onclick="viewCollection('playlist')">📂 My Playlists</div>
+    <div class="sidebar-link" onclick="viewCollection('liked')">♥ Liked Songs</div>
+</div>
+
+<div id="main-content-area">
+    <div style="margin-bottom: 40px;">
+        <h1 style="font-size: 42px;">Beyond <span style="color:var(--primary-pink)">The Noise</span></h1>
+        <p style="opacity:0.6;">Where every note feels like a heartbeat...</p>
+    </div>
+
+    <h2 style="font-size: 24px; margin-bottom: 25px; font-weight: 600;">Top Mixes</h2>
+<div class="top-mix-grid">
+    
+    <div class="mix-card" onclick="openPlaylist('Silent Heart', '💔🌙')" style="padding: 20px; text-align: center;">
+        <div style="margin-bottom:15px;">
+            <img src="1.jpg" alt="Phonk" style="width:160px; height:160px; border-radius:15px; object-fit:cover; box-shadow: 0 8px 20px rgba(0,0,0,0.5);">
+        </div>
+        <h3 style="font-size: 18px;">Silent Heart</h3>
+    </div>
+
+    <div class="mix-card" onclick="openPlaylist('Soft Memories', '🤍 🕊️')" style="padding: 20px; text-align: center;">
+        <div style="margin-bottom:15px;">
+            <img src="2.jpg" alt="Lofi" style="width:160px; height:160px; border-radius:15px; object-fit:cover; box-shadow: 0 8px 20px rgba(0,0,0,0.5);">
+        </div>
+        <h3 style="font-size: 18px;">Soft Memories</h3>
+    </div>
+
+    <div class="mix-card" onclick="openPlaylist('Electric Rush', '⚡ 🔥')" style="padding: 20px; text-align: center;">
+        <div style="margin-bottom:15px;">
+            <img src="3.jpg" alt="Pop" style="width:160px; height:160px; border-radius:15px; object-fit:cover; box-shadow: 0 8px 20px rgba(0,0,0,0.5);">
+        </div>
+        <h3 style="font-size: 18px;">Electric Rush</h3>
+    </div>
+
+</div>
+</div>
+
+<div id="login-modal" class="overlay">
+    <div class="auth-card">
+        <span onclick="closeModal('login-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <h2>Welcome Back</h2>
+        <input type="email" class="input-field" placeholder="Email">
+        <input type="password" class="input-field" placeholder="Password">
+        <button class="btn-auth" onclick="simulateLogin('User','user@mail.com')">Log In</button>
+        <div style="margin: 15px 0; opacity: 0.3; font-size: 11px; text-align: center;">OR</div>
+        <button class="btn-auth" style="background:transparent; border:1px solid #444;" onclick="openModal('google-picker')">Continue with Google</button>
+        <p style="text-align:center; margin-top:20px; font-size:13px; opacity:0.6;">
+            Don't have an account? <span onclick="openModal('register-modal')" style="color:var(--primary-mint); cursor:pointer; font-weight:bold;">Create Account</span>
+        </p>
+    </div>
+</div>
+
+<div id="google-picker" class="overlay">
+    <div class="auth-card">
+        <h3 style="margin-bottom:20px; text-align: center;">Select Account</h3>
+        <div class="song-item" style="cursor:pointer;" onclick="simulateLogin('Bagas','bagas@gmail.com')">Bagas</div>
+        <div class="song-item" style="cursor:pointer;" onclick="simulateLogin('Balqis','balqisj@gmail.com')">Balqis</div>
+    </div>
+</div>
+
+<div id="register-modal" class="overlay">
+    <div class="auth-card">
+        <span onclick="closeModal('register-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <h2>Create Account</h2>
+        <input type="text" id="reg-name" class="input-field" placeholder="Full Name">
+        <input type="email" class="input-field" placeholder="Email Address">
+        <input type="password" class="input-field" placeholder="Password">
+        <button class="btn-auth" onclick="simulateLogin(document.getElementById('reg-name').value || 'Bagas','bagas@gmail.com')">Sign Up</button>
+    </div>
+</div>
+
+<div id="profile-modal" class="overlay">
+    <div class="auth-card" style="text-align:center;">
+        <span onclick="closeModal('profile-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <div id="p-avatar" class="nav-avatar" style="width:75px; height:75px; margin:0 auto 15px; font-size:30px;">B</div>
+        <h2 id="p-name">Username</h2>
+        <div style="background:rgba(255,215,0,0.1); border:1px solid var(--gold); border-radius:15px; padding:10px; margin:20px 0; color:var(--gold); font-size:12px; font-weight:bold;">STUDENT PREMIUM</div>
+        <button class="btn-auth" style="background:transparent; border:2px solid var(--primary-pink); color:var(--primary-pink);" onclick="location.reload()">LOG OUT</button>
+    </div>
+</div>
+
+<div id="playlist-modal" class="overlay">
+    <div class="playlist-card">
+        <span onclick="closeModal('playlist-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <div style="text-align:center; margin-bottom:30px;">
+            <div id="pl-icon" style="font-size:60px;"></div>
+            <h2 id="pl-title">Name</h2>
+        </div>
+        <div id="songs-list"></div>
+    </div>
+</div>
+
+<div id="player-bar" class="player-bar">
+    <div class="player-top">
+        <div style="display:flex; align-items:center; gap:15px;">
+            <div id="np-icon" style="width:45px; height:45px; background:var(--primary-pink); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px;">🎶</div>
+            <div>
+                <p id="np-song" style="font-weight:600; font-size:15px;">Song Title</p>
+                <small id="np-artist" style="opacity:0.6;">Artist Name</small>
+            </div>
+        </div>
+        <div class="song-actions">
+            <button class="action-btn" style="font-size:25px;">⏮</button>
+            <button class="action-btn ${isLiked}" onclick="toggleLike('${sTitle}', '${sArtist}', '${sFile}', this)">♥</button>
+            <button id="play-btn" onclick="togglePlay()" style="background:white; border:none; width:45px; height:45px; border-radius:50%; cursor:pointer; font-size:20px;">⏸</button>
+            <button class="action-btn" style="font-size:25px;">⏭</button>
+        </div>
+    </div>
+    <div class="timeline-box">
+        <span class="time-label" id="time-curr">0:00</span>
+        <div class="progress-bg">
+            <div class="progress-fill" id="progress-bar"></div>
+        </div>
+        <span class="time-label">3:45</span>
+    </div>
+</div>
+
+<footer>
+        <p> &copy; 2026 Euphoria Entertainment.</p>
+    </footer>
+
+<audio id="main-audio-player">
+    <source id="audio-source" src="" type="audio/mpeg">
+</audio>
+
+<script>
+const playlistData = {
+    'Silent Heart': [
+        { title: "Tanpa Cinta", artist: "Yovie Widianto, Tiara Andini", file: "tanpacinta.mp3" },
+        { title: "Kota Ini Tak Sama", artist: "Nadhif Basalamah", file: "kota.mp3" },
+        { title: "Penjaga Hati", artist: "Nadhif Basalamah", file: "penjagahati.mp3" },
+        { title: "Aura", artist: "Ernie Zakri", file: "aura.mp3" },
+        { title: "Masing-masing", artist: "Ernie Zakri", file: "masing.mp3" },
+        { title: "Peluk", artist: "Hael Husaini", file: "peluk.mp3" },
+        { title: "Hari Ini", artist: "Hael Husaini", file: "hariini.mp3" },
+        { title: "Igauan Malam", artist: "Insomniacks", file: "igauan.mp3" },
+        { title: "Reminisensi", artist: "Insomniacks", file: "reminisensi.mp3" },
+        { title: "Menamakanmu Cinta", artist: "Siti Nurhaliza", file: "menamakanmu.mp3" },
+        { title: "Wildest Dream", artist: "Taylor Swift", file: "wildest.mp3" },
+        { title: "Malam Rawan", artist: "Rizky Febian", file: "malamrawan.mp3" },
+        { title: "Alamak", artist: "Rizky Febian", file: "alamak.mp3" }
+    ],
+    'Soft Memories': [
+        { title: "Setanggi Syurga", artist: "Inteam", file: "setanggi.mp3" },
+        { title: "Nur Kasih", artist: "Inteam", file: "nurkasih.mp3" },
+        { title: "Dirgahayu", artist: "Faizal Tahir, Siti Nurhaliza", file: "dirgahayu.mp3" },
+        { title: "Back To December", artist: "Taylor Swift", file: "btd.mp3" },
+        { title: "I", artist: "Taeyeon", file: "i.mp3" },
+        { title: "Vampire", artist: "Olivia Rodrigo", file: "vampire.mp3" },
+        { title: "Writing's On The Wall", artist: "Sam Smith", file: "writing.mp3" },
+        { title: "Ghost", artist: "Justin Bieber", file: "ghost.mp3" },
+        { title: "UR", artist: "Taeyeon", file: "ur.mp3" },
+        { title: "Blue Valentine", artist: "Nmixx", file: "bluev.mp3" },
+        { title: "Yellow", artist: "Treasure", file: "yellow.mp3" },
+        { title: "One Last Time", artist: "Ariana Grande", file: "onelasttime.mp3" }
+    ],
+    'Electric Rush': [
+        { title: "7 Rings", artist: "Ariana Grande", file: "7rings.mp3" },
+        { title: "Unholy", artist: "Sam Smith", file: "unholy.mp3" },
+        { title: "Jikjin", artist: "Treasure", file: "jikjin.mp3" },
+        { title: "Dice", artist: "Nmixx", file: "dice.mp3" },
+        { title: "Traitor", artist: "Olivia Rodrigo", file: "traitor.mp3" },
+        { title: "We Go Up", artist: "Babymonster", file: "wegoup.mp3" },
+        { title: "Psycho", artist: "Babymonster", file: "psycho.mp3" },
+        { title: "Stay", artist: "Justin Bieber", file: "stay.mp3" },
+        { title: "Bouncy", artist: "Ateez", file: "bouncy.mp3" },
+        { title: "Say My Name", artist: "Ateez", file: "saymyname.mp3" }
+    ]
+};
+
+let myLibrary = [];
+let likedSongs = [];
+let isPlaying = false;
+let playProgress = 0;
+let progressTimer;
+
+function openPlaylist(name, icon) {
+    document.getElementById('pl-title').innerText = name;
+    document.getElementById('pl-icon').innerHTML = `<span style="font-size: 60px;">${icon}</span>`;
+    const list = document.getElementById('songs-list');
+    list.innerHTML = '';
+
+    const songsToShow = playlistData[name] || [];
+    songsToShow.forEach((song) => {
+        // 1. Kenal pasti jika lagu sudah di-like
+        const isLikedClass = likedSongs.find(s => s.title === song.title) ? 'active-heart' : '';
+        
+        // 2. Bersihkan teks (elakkan ralat tanda ' dalam nama lagu)
+        const sTitle = song.title.replace(/'/g, "\\'");
+        const sArtist = song.artist.replace(/'/g, "\\'");
+        const sFile = song.file || "";
+
+        // 3. Masukkan ke HTML
+        list.innerHTML += `
+            <div class="song-item">
+                <div style="text-align:left;">
+                    <strong>${song.title}</strong><br>
+                    <small style="opacity:0.5">${song.artist}</small>
+                </div>
+                <div class="song-actions">
+                    <button class="action-btn ${isLikedClass}" onclick="toggleLike('${sTitle}', '${sArtist}', '${sFile}', this)">♥</button>
+                    <button class="action-btn" onclick="addToLibrary('${sTitle}', '${sArtist}', '${sFile}')">+</button>
+                    <button onclick="playSong('${sTitle}', '${sArtist}', '${sFile}')" style="background:var(--primary-pink); color:white; border:none; width:35px; height:35px; border-radius:50%; cursor:pointer;">▶</button>
+                </div>
+            </div>`;
+    });
+    document.getElementById('playlist-modal').style.display = 'flex';
+}
+function playSong(title, artist, fileName) {
+    const audio = document.getElementById('main-audio-player');
+    const source = document.getElementById('audio-source');
+
+    // Kemaskini UI Player
+    document.getElementById('np-song').innerText = title;
+    document.getElementById('np-artist').innerText = artist;
+    document.getElementById('player-bar').style.display = 'flex';
+
+    if (fileName) {
+        // Set punca fail
+        source.src = fileName;
+        audio.load(); // Paksa browser muat fail baru
+
+        // Cuba mainkan
+        audio.play().then(() => {
+            isPlaying = true;
+            document.getElementById('play-btn').innerText = "⏸";
+            startTimeline();
+        }).catch(error => {
+            console.error("Error Detail:", error);
+            showToast("Error: Sila semak fail .mp3 anda");
+        });
+    } else {
+        showToast("Tiada fail lagu ditetapkan!");
+    }
+    closeModal('playlist-modal');
+}
+
+function togglePlay() {
+    const audio = document.getElementById('main-audio-player');
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('play-btn').innerText = "▶";
+    } else {
+        audio.play();
+        isPlaying = true;
+        document.getElementById('play-btn').innerText = "⏸";
+    }
+}
+
+function startTimeline() {
+    clearInterval(progressTimer);
+    const audio = document.getElementById('main-audio-player');
+    progressTimer = setInterval(() => {
+        if (isPlaying && audio.duration) {
+            playProgress = (audio.currentTime / audio.duration) * 100;
+            document.getElementById('progress-bar').style.width = playProgress + "%";
+            
+            let m = Math.floor(audio.currentTime / 60);
+            let s = Math.floor(audio.currentTime % 60);
+            document.getElementById('time-curr').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+        }
+    }, 500);
+}
+
+function addToLibrary(title, artist, file) {
+    if (!myLibrary.find(s => s.title === title)) {
+        myLibrary.push({title, artist, file});
+        showToast("Added to Playlist! ✅");
+    } else { showToast("Already in Playlist."); }
+}
+
+function viewCollection(type) {
+    const isLiked = type === 'liked';
+    document.getElementById('pl-title').innerText = isLiked ? "Liked Songs" : "My Playlists";
+    document.getElementById('pl-icon').innerText = isLiked ? "❤️" : "📂";
+    const list = document.getElementById('songs-list');
+    const data = isLiked ? likedSongs : myLibrary;
+    list.innerHTML = data.length ? '' : '<p style="opacity:0.5; margin-top:20px;">Nothing here yet.</p>';
+    data.forEach(song => {
+        const sTitle = song.title.replace(/'/g, "\\'");
+        const sArtist = song.artist.replace(/'/g, "\\'");
+        const sFile = song.file || "";
+        list.innerHTML += `
+            <div class="song-item">
+                <div style="text-align:left;"><strong>${song.title}</strong><br><small style="opacity:0.5">${song.artist}</small></div>
+                <button onclick="playSong('${sTitle}', '${sArtist}', '${sFile}')" style="background:var(--primary-pink); color:white; border:none; width:35px; height:35px; border-radius:50%; cursor:pointer;">▶</button>
+            </div>`;
+    });
+    document.getElementById('playlist-modal').style.display = 'flex';
+}
+
+function toggleLike(title, artist, file, btn) {
+    const index = likedSongs.findIndex(s => s.title === title);
+    
+    if (index === -1) {
+        likedSongs.push({title, artist, file});
+        btn.classList.add('active-heart'); // Ini yang buat dia jadi merah
+        showToast("Added to Liked Songs! ♥");
+    } else {
+        likedSongs.splice(index, 1);
+        btn.classList.remove('active-heart'); // Ini buang warna merah
+        showToast("Removed from Liked Songs.");
+    }
+
+}function simulateLogin(name, email) {
+    closeModal('login-modal'); closeModal('google-picker'); closeModal('register-modal');
+    document.getElementById('auth-nav-area').innerHTML = `<div class="nav-profile-box" onclick="openModal('profile-modal')"><span>${name}</span><div class="nav-avatar">${name[0]}</div></div>`;
+    document.getElementById('main-sidebar').style.display = 'flex';
+    document.getElementById('main-content-area').classList.add('shifted');
+    document.getElementById('p-name').innerText = name;
+    showToast("Welcome, " + name + "!");
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.innerText = msg; t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 2000);
+}
+
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+window.onclick = function(e) { if(e.target.className === 'overlay') e.target.style.display = 'none'; }
+
+function updateDateTime() {
+    const d = new Date();
+    
+    // Format Masa
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    document.getElementById('clock').innerText = d.toLocaleTimeString('en-US', timeOptions);
+    
+    // Format Tarikh
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    // Gunakan tanda backtick ` untuk template strings
+    document.getElementById('date').innerText = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+}
+
+// Jalankan setiap saat
+setInterval(updateDateTime, 1000);
+updateDateTime();
+</script>
+</body>
+</html>
