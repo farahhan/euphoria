@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Euphoria | Premium Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="premiumstyle.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">EUPHORIA</div>
+
+    <ul>
+        <li><a href="index.html" class="home-link">Home</a></li>
+        <li><a href="about.html" class="home-link">About Us</a></li>
+        <li><a href="browse.html" class="home-link">Browse</a></li>
+        <li><a href="premium.html" class="home-link">Premium</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+        <div id="auth-nav-area">
+            <button class="btn-signin" onclick="openModal('login-modal')">Sign In</button>
+        </div>
+        
+        <div class="datetime-container">
+            <div id="clock"></div>
+            <div id="date"></div>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<section id="main-content-area">
+
+    <h1 class="page-title">Go <span class="mint">Premium</span></h1>
+    <p class="subtitle">Pick the plan that fits your lifestyle. Cancel anytime.</p>
+
+    <!-- PREMIUM PLANS -->
+    <div class="top-mix-grid premium-grid">
+
+        <div class="mix-card">
+            <h2 class="plan-title">Individual</h2>
+            <h3 class="price">RM19.90</h3>
+            <p class="period">per month</p>
+            <ul class="plan-list">
+                <li>✔️ Ad-free listening</li>
+                <li>✔️ Download music</li>
+                <li>✔️ High quality audio</li>
+            </ul>
+            <button class="btn-signin full-width plan-btn" data-plan="Individual">
+                Get Individual
+            </button>
+        </div>
+
+        <div class="mix-card">
+            <h2 class="plan-title">Student</h2>
+            <h3 class="price">RM9.90</h3>
+            <p class="period">per month</p>
+            <ul class="plan-list">
+                <li>✔️ All Individual features</li>
+                <li>✔️ Student discount</li>
+            </ul>
+            <button class="btn-signin full-width plan-btn" data-plan="Student">
+                Get Student
+            </button>
+        </div>
+
+        <div class="mix-card">
+            <h2 class="plan-title">Duo</h2>
+            <h3 class="price">RM24.90</h3>
+            <p class="period">per month</p>
+            <ul class="plan-list">
+                <li>✔️ 2 Premium accounts</li>
+                <li>✔️ Separate profiles</li>
+            </ul>
+            <button class="btn-signin full-width plan-btn" data-plan="Duo">
+                Get Duo
+            </button>
+        </div>
+
+        <div class="mix-card">
+            <h2 class="plan-title">Family</h2>
+            <h3 class="price">RM29.90</h3>
+            <p class="period">per month</p>
+            <ul class="plan-list">
+                <li>✔️ Up to 6 accounts</li>
+                <li>✔️ Parental control</li>
+            </ul>
+            <button class="btn-signin full-width plan-btn" data-plan="Family">
+                Get Family
+            </button>
+        </div>
+
+    </div>
+
+   <div class="mix-card payment-card" id="payment">
+        <h2>Payment</h2>
+        <p class="subtitle">Secure payment via trusted partners</p>
+
+        <input class="input-field" type="text" id="p-full-name" placeholder="Full Name">
+        <input class="input-field" type="email" placeholder="Email Address">
+
+        <select class="input-field" id="planSelect">
+            <option>Select Plan</option>
+            <option>Individual</option>
+            <option>Student</option>
+            <option>Duo</option>
+            <option>Family</option>
+        </select>
+
+        <select class="input-field">
+            <option>Payment Method</option>
+            <option>Visa / MasterCard</option>
+            <option>Online Banking</option>
+            <option>E-Wallet</option>
+        </select>
+        <button class="btn-auth" id="payBtn">Proceed to Payment</button>
+    </div>
+</section>
+
+<div id="login-modal" class="overlay">
+    <div class="auth-card">
+        <span onclick="closeModal('login-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <h2>Welcome Back</h2>
+        <input type="email" class="input-field" placeholder="Email">
+        <input type="password" class="input-field" placeholder="Password">
+        <button class="btn-auth" onclick="simulateLogin('User','user@mail.com')">Log In</button>
+        <div style="margin: 15px 0; opacity: 0.3; font-size: 11px;">OR</div>
+        <button class="btn-auth" style="background:transparent; border:1px solid #444;" onclick="openModal('google-picker')">Continue with Google</button>
+    </div>
+</div>
+
+<div id="google-picker" class="overlay">
+    <div class="auth-card">
+        <h3>Select Account</h3>
+        <div style="padding:15px; cursor:pointer; border-bottom:1px solid #333;" onclick="simulateLogin('Bagas','bagas@gmail.com')">Bagas</div>
+        <div style="padding:15px; cursor:pointer;" onclick="simulateLogin('Balqis','balqisj@gmail.com')">Balqis</div>
+    </div>
+</div>
+
+<div id="profile-modal" class="overlay">
+    <div class="auth-card">
+        <span onclick="closeModal('profile-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+        <div id="p-avatar" class="nav-avatar" style="width:75px; height:75px; margin:0 auto 15px; font-size:30px;">B</div>
+        <h2 id="p-name">Username</h2>
+        <button class="btn-auth" onclick="localStorage.removeItem('username'); location.reload();">LOG OUT</button>
+    </div>
+</div>
+
+<div id="toast" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--primary-mint); padding:10px 30px; border-radius:50px; z-index:10000; font-weight:bold;">Berjaya! ✅</div>
+
+
+
+<!-- FOOTER -->
+<footer>
+        <p> &copy; 2026 Euphoria Entertainment.</p>
+    </footer>
+
+<script src="javascript.js"></script>
+</body>
+</html>
