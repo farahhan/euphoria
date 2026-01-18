@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euphoria Entertainment | Music & Lifestyle</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">EUPHORIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="premium.html">Premium</a></li>
+        </ul>
+        <div class="nav-right-group">
+            <div id="auth-nav-area">
+                <button class="btn-signin" onclick="openModal('login-modal')">Sign In</button>
+            </div>
+            <div class="datetime-container">
+                <div id="clock">00:00:00</div>
+                <div id="date">Loading...</div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h2 class="section-title">Browse <span class="highlight">All</span></h2>
+    </header>
+
+    <section class="browse-section">
+        <div class="browse-grid">
+            <div class="music-card card-malay" onclick="showArtists('malay')">
+                <h3> &#127900; Malay Pop</h3>
+                <img src="dsn.png" alt="Malay">
+            </div>
+            <div class="music-card card-kpop" onclick="showArtists('kpop')">
+                <h3> &#127900; K-Pop</h3>
+                <img src="treasure.png" alt="Kpop">
+            </div>
+            <div class="music-card card-pop" onclick="showArtists('pop')">
+                <h3> &#127900; Pop</h3>
+                <img src="ariana.png" alt="Pop">
+            </div>
+            <div class="music-card card-indo" onclick="showArtists('indonesian')">
+                <h3> &#127900; Musik Indonesia</h3>
+                <img src="nadhif.png" alt="Indo">
+            </div>
+        </div>
+
+        <div id="playlist-display">
+            <h2 id="current-title" style="color: var(--primary-mint); margin-bottom: 20px;"></h2>
+            <div id="content-list"></div>
+        </div>
+    </section>
+
+    <div id="login-modal" class="overlay">
+        <div class="auth-card">
+            <span onclick="closeModal('login-modal')" style="position:absolute; right:25px; top:20px; cursor:pointer;">✕</span>
+            <h2>Welcome Back</h2>
+            <input type="email" class="input-field" placeholder="Email">
+            <input type="password" class="input-field" placeholder="Password">
+            <button class="btn-auth" onclick="simulateLogin('User','user@mail.com')">Log In</button>
+            <p style="text-align:center; margin-top:20px; font-size:13px; opacity:0.6;">
+                Don't have an account? <span onclick="openModal('register-modal')" style="color:var(--primary-mint); cursor:pointer;">Create Account</span>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p> &copy; 2026 Euphoria Entertainment.</p>
+    </footer>
+
+    <div id="bottom-player" class="bottom-player-bar">
+        <div class="player-left">
+            <div class="nav-avatar" style="background: var(--primary-pink); border:none; width:45px; height:45px; display:flex; align-items:center; justify-content:center;">🎵</div>
+            <div>
+                <h4 id="btm-title" style="margin:0; font-size:14px; color:white;">Select a song</h4>
+                <p id="btm-artist" style="margin:0; font-size:11px; color:var(--primary-mint);">Euphoria Player</p>
+            </div>
+        </div>
+
+        <div class="player-center">
+            <button onclick="togglePlay()" id="btm-play-btn" style="background:none; border:none; color:white; font-size:24px; cursor:pointer; margin-bottom:5px;">⏸️</button>
+            <div class="timeline-container">
+                <span id="btm-current" class="time-label">0:00</span>
+                <div class="timeline-bg" onclick="seekAudio(event)">
+                    <div id="btm-bar" class="timeline-fill"></div>
+                </div>
+                <span id="btm-duration" class="time-label">0:00</span>
+            </div>
+        </div>
+
+        <div class="player-right">
+            <button onclick="closePlayer()" style="background:none; border:none; color:white; cursor:pointer; font-size:18px;">✕</button>
+        </div>
+    </div>
+
+    <audio id="main-audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
