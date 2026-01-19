@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -331,11 +331,11 @@ function toggleLike(title, artist, file, btn) {
     
     if (index === -1) {
         likedSongs.push({title, artist, file});
-        btn.classList.add('active-heart'); // Ini yang buat dia jadi merah
+        btn.classList.add('active-heart'); 
         showToast("Added to Liked Songs! ♥");
     } else {
         likedSongs.splice(index, 1);
-        btn.classList.remove('active-heart'); // Ini buang warna merah
+        btn.classList.remove('active-heart'); 
         showToast("Removed from Liked Songs.");
     }
 
@@ -361,21 +361,22 @@ window.onclick = function(e) { if(e.target.className === 'overlay') e.target.sty
 function updateDateTime() {
     const d = new Date();
     
-    // Format Masa
+   
     const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
     document.getElementById('clock').innerText = d.toLocaleTimeString('en-US', timeOptions);
     
-    // Format Tarikh
+    
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     
-    // Gunakan tanda backtick ` untuk template strings
+    
     document.getElementById('date').innerText = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
 }
 
-// Jalankan setiap saat
+
 setInterval(updateDateTime, 1000);
 updateDateTime();
 </script>
 </body>
+
 </html>
