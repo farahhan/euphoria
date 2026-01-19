@@ -1,4 +1,4 @@
-/* ================= MUSIC DATA ================= */
+
 const musicData = {
     malay: {
         "Dato Siti Nurhaliza": [
@@ -69,11 +69,11 @@ const musicData = {
     }
 };
 
-/* ================= GLOBAL ================= */
+
 let activeGenre = "";
 const audio = document.getElementById("main-audio-player");
 
-/* ================= BROWSE ================= */
+
 function showArtists(genre) {
     activeGenre = genre;
     const display = document.getElementById("playlist-display");
@@ -126,7 +126,7 @@ function showSongs(artist) {
     });
 }
 
-/* ================= PLAYER ================= */
+
 function playSong(file, title, artist) {
     audio.src = file;
     audio.play();
@@ -153,7 +153,7 @@ function closePlayer() {
     document.getElementById("bottom-player").style.display = "none";
 }
 
-/* ================= TIMELINE ================= */
+
 audio.ontimeupdate = () => {
     if (!audio.duration) return;
     document.getElementById("btm-bar").style.width =
@@ -174,7 +174,7 @@ function formatTime(sec) {
     return m + ":" + (s < 10 ? "0" + s : s);
 }
 
-/* ================= CLOCK ================= */
+
 function updateDateTime() {
     document.getElementById("clock").innerText =
         new Date().toLocaleTimeString();
@@ -183,3 +183,4 @@ function updateDateTime() {
 }
 setInterval(updateDateTime, 1000);
 updateDateTime();
+
