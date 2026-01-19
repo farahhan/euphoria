@@ -7,7 +7,7 @@
     --white: #FFFFFF;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+ { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
 
 body { 
 background-color: #3d345d; 
@@ -312,4 +312,5 @@ summary::after { content: '↓'; color: var(--primary-mint); }
     .main-footer {
         padding: 20px 5%;
     }
+
 }
