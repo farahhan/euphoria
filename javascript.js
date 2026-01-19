@@ -35,7 +35,7 @@ function updateDateTime() {
 }
 
 function setupPayment() {
-    // Skrol bila klik butang plan
+    
     document.querySelectorAll('.plan-btn').forEach(btn => {
         btn.onclick = function() {
             const plan = this.getAttribute('data-plan');
@@ -47,7 +47,7 @@ function setupPayment() {
     const payBtn = document.getElementById('payBtn');
     if(payBtn) {
         payBtn.onclick = function() {
-            // Ambil ID input yang kita tambah dalam HTML tadi
+            
             const nameInput = document.getElementById('p-full-name');
             
             if(!nameInput || nameInput.value.trim() === "") {
@@ -55,7 +55,7 @@ function setupPayment() {
                 return;
             }
 
-            // Simulasi Submit
+            
             this.innerText = "Processing...";
             this.disabled = true;
 
@@ -63,13 +63,13 @@ function setupPayment() {
                 alert("Payment Successful! Thank you, " + nameInput.value);
                 this.innerText = "Proceed to Payment";
                 this.disabled = false;
-                nameInput.value = ""; // Reset input
+                nameInput.value = "";
             }, 2000);
         };
     }
 }
 
-// --- 4. INITIALIZE ---
+
 window.onload = () => {
     checkLoginStatus();
     updateDateTime();
@@ -90,4 +90,5 @@ function showToast(msg) {
     t.innerText = msg; t.style.display = 'block';
     setTimeout(() => { t.style.display = 'none'; }, 2000);
 }
+
 window.onclick = (e) => { if(e.target.className === 'overlay') e.target.style.display = 'none'; }
