@@ -1,4 +1,4 @@
-* {
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -45,15 +45,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background-color: var(--primary-mint); /* Mint pekat asal */
-    border-bottom: 4px solid var(--primary-pink); /* Pink tebal asal */
+    background-color: var(--primary-mint); 
+    border-bottom: 4px solid var(--primary-pink); 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .datetime-container {
-    background: rgba(255, 255, 255, 0.15); /* Kesan glassmorphism */
+    background: rgba(255, 255, 255, 0.15); 
     padding: 5px 20px;
     border-radius: 15px;
     text-align: center;
@@ -74,7 +74,7 @@ nav {
 #date {
     font-size: 11px;
     font-weight: 600;
-    color: #fce4ec; /* Pink sangat lembut */
+    color: #fce4ec; 
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -104,7 +104,7 @@ nav ul li a {
 nav ul li a:hover {
     color: pink;
 }
-/* --- NAVIGATION UTAMA --- */
+
 nav { 
     display: flex; 
     justify-content: space-between; 
@@ -128,7 +128,7 @@ nav {
 .nav-right-group { 
     display: flex; 
     align-items: center; 
-    gap: 1px; /* Laraskan gap ini supaya jam dan butang tak terlalu jauh */
+    gap: 1px; 
 }
 
 .nav-links { 
@@ -147,11 +147,10 @@ nav {
 
 .nav-links a:hover { color: pink; }
 
-/* --- BUTANG SIGN IN --- */
+
 .btn-signin { 
     padding: 12px 30px; 
     border-radius: 50px; 
-    /* Guna gradient seperti kod kedua yang anda mahukan */
     background: linear-gradient(45deg, var(--primary-pink), #FFD700); 
     color: white; 
     font-weight: 600; 
@@ -167,10 +166,10 @@ nav {
     backdrop-filter: blur(15px);
     border-top: 3px solid var(--primary-mint);
     padding: 15px 5%;
-    display: none; /* Akan ditukar ke flex oleh JS */
+    display: none; 
     align-items: center;
     justify-content: space-between;
-    z-index: 9999; /* Paling atas sekali */
+    z-index: 9999; 
     color: white;
 }
 
@@ -332,11 +331,10 @@ header {
     position: absolute;
     bottom: 30px;
     left: 50%;
-    /* Posisi asal senget sikit */
     transform: translateX(-50%) rotate(5deg);
     border: 6px solid white;
     border-radius: 25px;
-    transition: 0.5s ease; /* PENTING: Untuk kesan gerak smooth */
+    transition: 0.5s ease; 
     object-fit: cover;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
@@ -411,7 +409,7 @@ header {
 
 
 footer {
-    background-color: var(--primary-mint); /* Mint asal */
+    background-color: var(--primary-mint); 
     color: var(--white);
     text-align: center;
     font-weight: 600;
@@ -426,4 +424,5 @@ footer {
 @media (max-width: 650px) {
     .browse-grid { grid-template-columns: repeat(1, 1fr); }
     .music-card { height: 320px; }
+
 }
