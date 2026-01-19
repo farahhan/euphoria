@@ -7,7 +7,7 @@
     --white: #FFFFFF;
 }
 
-* {
+  {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -31,15 +31,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 40px 8%;
-    background-color: var(--primary-mint); /* Mint pekat asal */
-    border-bottom: 4px solid var(--primary-pink); /* Pink tebal asal */
+    background-color: var(--primary-mint); 
+    border-bottom: 4px solid var(--primary-pink); 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .datetime-container {
-    background: rgba(255, 255, 255, 0.15); /* Kesan glassmorphism */
+    background: rgba(255, 255, 255, 0.15); 
     padding: 5px 20px;
     border-radius: 15px;
     text-align: center;
@@ -60,7 +60,7 @@ nav {
 #date {
     font-size: 11px;
     font-weight: 600;
-    color: #fce4ec; /* Pink sangat lembut */
+    color: #fce4ec;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -97,7 +97,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 .btn-signin { padding: 12px 30px; border-radius: 50px; background: linear-gradient(45deg, var(--primary-pink), var(--gold)); color: white; font-weight: 600; border: none; cursor: pointer; }
 
-/* CONTENT */
+
 #main-content-area {
     padding: 60px 10%;
     text-align: center;
@@ -115,7 +115,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     margin-top: 10px;
 }
 
-/* GRID */
+
 .top-mix-grid {
     display: grid;
     gap: 30px;
@@ -127,7 +127,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     max-width: 900px;
 }
 
-/* CARDS */
+
 .mix-card {
     background: var(--card-bg);
     padding: 30px;
@@ -170,7 +170,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     margin-top: 25px;
 }
 
-/* PAYMENT */
+
 .payment-card {
     margin-top: 80px;
     max-width: 600px;
@@ -269,7 +269,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 }
 
 
-/* FOOTER */
+
 footer {
     background: var(--primary-mint);
     border-top: 4px solid var(--primary-pink);
@@ -281,4 +281,5 @@ footer {
 .quote-text {
     font-size: 14px;
     font-style: italic;
+
 }
